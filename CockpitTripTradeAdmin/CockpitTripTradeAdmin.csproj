@@ -1,0 +1,516 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6941EFE7-370C-4116-9894-32D6CC17F722}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CockpitTripTradeAdmin</RootNamespace>
+    <AssemblyName>CockpitTripTradeAdmin</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="FZDBProdConnectionString-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28localdb%29\mssqllocaldb%3bInitial Catalog=operadb%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\FZDBProdConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="FZDBTestConnectionString-Deployment" Order="2">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=ort3%3bPersist Security Info=True%3bUser ID=fzw2%3bPassword=xns72fs9kf%3bEnlist=false%3b" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\FZDBTestConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="HAMProdConnectionString-Deployment" Order="3">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Application Name=CockpitTripTrade%3bserver=10.16.49.175%3bdatabase=db_HAM%3buid=HAM_cs_ap02%3bpwd=HAM#csap02prod%3b" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\HAMProdConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="HAMTestConnectionString-Deployment" Order="4">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Application Name=CockpitTripTrade%3bserver=10.16.49.178%3bdatabase=db_HAM%3buid=HAM_cs_ap02%3bpwd=HAM#csap02test%3bEncrypt=yes%3bTrustServerCertificate=True%3b" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\HAMTestConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="BusyBoxDotNet, Version=0.2.1.1366, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\BusyBoxDotNet.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="jose-jwt, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jose-jwt.2.6.0\lib\net461\jose-jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.9.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.9\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.21.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.21.8.0\lib\net462\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="asset\cont-img\icon-arrow-right.svg" />
+    <Content Include="asset\cont-img\icon-check-white%402x.png" />
+    <Content Include="asset\cont-img\icon-check-white.svg" />
+    <Content Include="asset\cont-img\icon-state-cked.svg" />
+    <Content Include="asset\cont-img\icon-state-close.svg" />
+    <Content Include="asset\JavaScript.js" />
+    <Content Include="asset\plug-in\daterangepicker\daterangepicker.css" />
+    <Content Include="asset\plug-in\daterangepicker\daterangepicker.js" />
+    <Content Include="asset\plug-in\daterangepicker\moment.min.js" />
+    <Content Include="asset\v3.0.0\%40ver20210122.txt" />
+    <Content Include="asset\v3.0.0\Copyright  China Airlines 中華航空版權所有.txt" />
+    <Content Include="asset\v3.0.0\css\bootstrap-grid.css" />
+    <Content Include="asset\v3.0.0\css\bootstrap-grid.min.css" />
+    <Content Include="asset\v3.0.0\css\bootstrap-reboot.css" />
+    <Content Include="asset\v3.0.0\css\bootstrap-reboot.min.css" />
+    <Content Include="asset\v3.0.0\css\bootstrap.css" />
+    <Content Include="asset\v3.0.0\css\bootstrap.min.css" />
+    <Content Include="asset\v3.0.0\css\civd-content-style.css" />
+    <Content Include="asset\v3.0.0\css\page-conblock-v3s-custom.css" />
+    <Content Include="asset\v3.0.0\css\page-login-v3s-custom.css" />
+    <Content Include="asset\v3.0.0\css\page-login-v3s-fcds.css" />
+    <Content Include="asset\v3.0.0\css\page-systemMain-custom.css" />
+    <Content Include="asset\v3.0.0\css\page-systemMain-fcrewSwitch.css" />
+    <Content Include="asset\v3.0.0\css\temp-login-v3s.css" />
+    <Content Include="asset\v3.0.0\css\temp-otherstate-v3s.css" />
+    <Content Include="asset\v3.0.0\css\temp-systemMain-v3s.css" />
+    <Content Include="asset\v3.0.0\images\icons\icon-arrow-round-simple-up.svg" />
+    <Content Include="asset\v3.0.0\images\icons\img-status-empty.svg" />
+    <Content Include="asset\v3.0.0\images\icons\img-status-no-result.svg" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\img-ci-logo-en%402x.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\img-ci-logo-en%403x.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\img-ci-logo-en.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\status-browser-upgrade.svg" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\status-fix.svg" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\status-logout.svg" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\status-maintaince.svg" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\status-page404.svg" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\status-permission.svg" />
+    <Content Include="asset\v3.0.0\images\img-temp-conblock-v3s\status-system-error.svg" />
+    <Content Include="asset\v3.0.0\images\img-temp-systemMain-v3s\btn-main-nav.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-systemMain-v3s\btn-nav-settings.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-systemMain-v3s\ci-logo-en%402x.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-systemMain-v3s\icon-flowarrow.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-systemMain-v3s\icon-goToTop.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-systemMain-v3s\icon-triangle-red-down.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-systemMain-v3s\icon-user-hdr.png" />
+    <Content Include="asset\v3.0.0\images\img-temp-systemMain-v3s\icon_header_home.png" />
+    <Content Include="asset\v3.0.0\images\loading\ci-plane-loading.gif" />
+    <Content Include="asset\v3.0.0\images\loading\ld01\ld_global_cities.png" />
+    <Content Include="asset\v3.0.0\images\loading\ld01\ld_global_plane.png" />
+    <Content Include="asset\v3.0.0\images\loading\ld02\ld_ci_plane.png" />
+    <Content Include="asset\v3.0.0\js\bootstrap.bundle.js" />
+    <Content Include="asset\v3.0.0\js\bootstrap.bundle.min.js" />
+    <Content Include="asset\v3.0.0\js\bootstrap.js" />
+    <Content Include="asset\v3.0.0\js\bootstrap.min.js" />
+    <Content Include="asset\v3.0.0\js\civd-systemMain-v3s.js" />
+    <Content Include="asset\v3.0.0\js\jquery-3.5.1.js" />
+    <Content Include="asset\v3.0.0\js\jquery.min.js" />
+    <Content Include="asset\v3.0.0\js\jquery.slimscroll.min.js" />
+    <Content Include="asset\v3.0.0\js\metisMenu.js" />
+    <Content Include="asset\v3.0.0\js\metisMenu.min.js" />
+    <Content Include="asset\v3.0.0\js\page-fcrewSwitch-audit.js" />
+    <Content Include="asset\v3.0.0\js\page-fcrewSwitch.js" />
+    <Content Include="CockpitTripTradeAdmin\Callback.aspx" />
+    <Content Include="Module\Admin\ImpersonateUser.aspx" />
+    <Content Include="Module\Application\FcdsApply.aspx" />
+    <Content Include="Module\Application\FcdsApply_List.aspx" />
+    <Content Include="Module\Application\ReviewFcdsApply_List.aspx" />
+    <Content Include="Module\Application\UserControl\FcdsApplyApprove.ascx" />
+    <Content Include="Module\Application\UserControl\FcdsApplyRoster.ascx" />
+    <Content Include="Module\Application\UserControl\TabFcdsApplyList.ascx" />
+    <Content Include="Module\Configuration\Group.aspx" />
+    <Content Include="Module\Configuration\Group_List.aspx" />
+    <Content Include="Module\ErrorHandler\Exception.aspx" />
+    <Content Include="Module\ErrorHandler\NotFoundPage.aspx" />
+    <Content Include="Module\ErrorHandler\Timeout.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Module\Configuration\FcdsRejectReason.aspx" />
+    <Content Include="Module\Configuration\FcdsConfig.aspx" />
+    <Content Include="Module\Configuration\FcdsRejectReason_List.aspx" />
+    <Content Include="Module\Configuration\FcdsConfig_List.aspx" />
+    <Content Include="Module\Configuration\FcdsConfig_Log.aspx" />
+    <Content Include="Module\ErrorHandler\UnauthorizedPage.aspx" />
+    <Content Include="Module\Schedule\FcdsApply_Auto.aspx" />
+    <Content Include="UserControl\ApprovalHistory.ascx" />
+    <Content Include="UserControl\ChangeHistory.ascx" />
+    <Content Include="UserControl\TeamGroup.ascx" />
+    <Content Include="UserControl\SelectEmployee.ascx" />
+    <Content Include="UserControl\ValidationSummary.ascx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CockpitTripTradeAdmin\Callback.aspx.cs">
+      <DependentUpon>Callback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CockpitTripTradeAdmin\Callback.aspx.designer.cs">
+      <DependentUpon>Callback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Admin\ImpersonateUser.aspx.cs">
+      <DependentUpon>ImpersonateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Admin\ImpersonateUser.aspx.designer.cs">
+      <DependentUpon>ImpersonateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Application\FcdsApply.aspx.cs">
+      <DependentUpon>FcdsApply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Application\FcdsApply.aspx.designer.cs">
+      <DependentUpon>FcdsApply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Application\FcdsApply_List.aspx.cs">
+      <DependentUpon>FcdsApply_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Application\FcdsApply_List.aspx.designer.cs">
+      <DependentUpon>FcdsApply_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Application\ReviewFcdsApply_List.aspx.cs">
+      <DependentUpon>ReviewFcdsApply_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Application\ReviewFcdsApply_List.aspx.designer.cs">
+      <DependentUpon>ReviewFcdsApply_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Application\UserControl\FcdsApplyApprove.ascx.cs">
+      <DependentUpon>FcdsApplyApprove.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Application\UserControl\FcdsApplyApprove.ascx.designer.cs">
+      <DependentUpon>FcdsApplyApprove.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Application\UserControl\FcdsApplyRoster.ascx.cs">
+      <DependentUpon>FcdsApplyRoster.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Application\UserControl\FcdsApplyRoster.ascx.designer.cs">
+      <DependentUpon>FcdsApplyRoster.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Application\UserControl\TabFcdsApplyList.ascx.cs">
+      <DependentUpon>TabFcdsApplyList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Application\UserControl\TabFcdsApplyList.ascx.designer.cs">
+      <DependentUpon>TabFcdsApplyList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Configuration\Group.aspx.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Configuration\Group.aspx.designer.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Configuration\Group_List.aspx.cs">
+      <DependentUpon>Group_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Configuration\Group_List.aspx.designer.cs">
+      <DependentUpon>Group_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\ErrorHandler\Exception.aspx.cs">
+      <DependentUpon>Exception.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\ErrorHandler\Exception.aspx.designer.cs">
+      <DependentUpon>Exception.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\ErrorHandler\NotFoundPage.aspx.cs">
+      <DependentUpon>NotFoundPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\ErrorHandler\NotFoundPage.aspx.designer.cs">
+      <DependentUpon>NotFoundPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\ErrorHandler\Timeout.aspx.cs">
+      <DependentUpon>Timeout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\ErrorHandler\Timeout.aspx.designer.cs">
+      <DependentUpon>Timeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsRejectReason.aspx.cs">
+      <DependentUpon>FcdsRejectReason.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsRejectReason.aspx.designer.cs">
+      <DependentUpon>FcdsRejectReason.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsConfig.aspx.cs">
+      <DependentUpon>FcdsConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsConfig.aspx.designer.cs">
+      <DependentUpon>FcdsConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsRejectReason_List.aspx.cs">
+      <DependentUpon>FcdsRejectReason_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsRejectReason_List.aspx.designer.cs">
+      <DependentUpon>FcdsRejectReason_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsConfig_List.aspx.cs">
+      <DependentUpon>FcdsConfig_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsConfig_List.aspx.designer.cs">
+      <DependentUpon>FcdsConfig_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsConfig_Log.aspx.cs">
+      <DependentUpon>FcdsConfig_Log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Configuration\FcdsConfig_Log.aspx.designer.cs">
+      <DependentUpon>FcdsConfig_Log.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Schedule\FcdsApply_Auto.aspx.cs">
+      <DependentUpon>FcdsApply_Auto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\Schedule\FcdsApply_Auto.aspx.designer.cs">
+      <DependentUpon>FcdsApply_Auto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Module\ErrorHandler\UnauthorizedPage.aspx.cs">
+      <DependentUpon>UnauthorizedPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\ErrorHandler\UnauthorizedPage.aspx.designer.cs">
+      <DependentUpon>UnauthorizedPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ApprovalHistory.ascx.cs">
+      <DependentUpon>ApprovalHistory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ApprovalHistory.ascx.designer.cs">
+      <DependentUpon>ApprovalHistory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ChangeHistory.ascx.cs">
+      <DependentUpon>ChangeHistory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ChangeHistory.ascx.designer.cs">
+      <DependentUpon>ChangeHistory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\TeamGroup.ascx.cs">
+      <DependentUpon>TeamGroup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\TeamGroup.ascx.designer.cs">
+      <DependentUpon>TeamGroup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\SelectEmployee.ascx.cs">
+      <DependentUpon>SelectEmployee.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\SelectEmployee.ascx.designer.cs">
+      <DependentUpon>SelectEmployee.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ValidationSummary.ascx.cs">
+      <DependentUpon>ValidationSummary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ValidationSummary.ascx.designer.cs">
+      <DependentUpon>ValidationSummary.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Log4Net.config" />
+    <Content Include="MasterPage\MasterPage.Master" />
+    <Content Include="asset\v3.0.0\js\bootstrap.bundle.js.map" />
+    <Content Include="asset\v3.0.0\js\bootstrap.bundle.min.js.map" />
+    <Content Include="asset\v3.0.0\js\bootstrap.js.map" />
+    <Content Include="asset\v3.0.0\js\bootstrap.min.js.map" />
+    <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Oracle.ManagedDataAccess.Client.Configuration.Section.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <Content Include="Web.sitemap" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{66fb6a34-29f4-466a-b0f7-f388ba35d1f4}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55889</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55889/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

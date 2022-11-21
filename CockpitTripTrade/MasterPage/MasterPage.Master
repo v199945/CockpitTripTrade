@@ -1,0 +1,278 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="CockpitTripTrade.MasterPage.MasterPage" %>
+
+<%--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">--%>
+<%--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"  "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">--%>
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- InstanceBegin template="/Templates/temp_sysMain_v3s.dwt" codeOutsideHTMLIsLocked="false" -->
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="網頁關鍵字">
+    <meta name="description" content="這裡是網頁的簡短描述">
+    <meta name="copyright" content="中華航空 China Airlines">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Flight Crew Duty Swap Application System</title>
+    <!-- InstanceEndEditable -->
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="../asset/v3.0.0/css/civd-content-style.css?vd20221109" />
+    <link rel="stylesheet" type="text/css" href="../asset/v3.0.0/css/temp-systemMain-v3s.css?vd20201109" />
+    <link rel="stylesheet" type="text/css" href="../asset/v3.0.0/css/page-systemMain-custom.css?vd20221109" />
+
+    <!--javascript-->
+    <script src="../../asset/v3.0.0/js/jquery.min.js?vd20221109"></script>
+    <script src="../../asset/v3.0.0/js/bootstrap.bundle.min.js?vd20221109"></script>
+    <script src="../../asset/v3.0.0/js/metisMenu.min.js"></script>
+    <script src="../../asset/v3.0.0/js/jquery.slimscroll.min.js"></script>
+    <script src="../../asset/v3.0.0/js/civd-systemMain-v3s.js"></script>
+    
+    <%--<script src="../../asset/jquery/datepicker/js/jquery-1.12.1-ui.js"></script>--%>
+    <script type="text/javascript" src="../../asset/plug-in/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="../../asset/plug-in/daterangepicker/daterangepicker.js"></script>
+    <script src="../../asset/JavaScript.js"></script>
+    <!-- InstanceBeginEditable name="head" -->
+    <link rel="stylesheet" type="text/css" href="../asset/v3.0.0/css/page-systemMain-fcrewSwitch.css?vd20221109">
+    <%--<link rel="stylesheet" type="text/css" href="../asset/jquery/datepicker/css/jquery-1.12.1-ui.css" />--%>
+    <link rel="stylesheet" type="text/css" href="../asset/plug-in/daterangepicker/daterangepicker.css" />
+
+    <!-- InstanceEndEditable -->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="MasterBody">
+    <div id="wrapper">
+        <div id="page-container">
+
+            <form id="form1" runat="server"><%-- class="container"--%>
+
+                <header id="header">
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                         <%--<Scripts>
+                            <asp:ScriptReference Name="jquery" />
+                            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
+                        </Scripts>--%>
+                    </asp:ScriptManager>
+                    <script>
+                        <%-- UpdatePanel Button PostBack 後，jQuery Script 失效解決方法
+                          1. 在伺服器端程式執行完成後呼叫 ScriptManager.RegisterStartupScript(Control, Type, String, String, Boolean) 方法重新綁定
+                          2. 在用戶端取得 Sys.WebForms.PageRequestManager.getInstance() 後呼叫 add_endRequest 方法重新綁定
+                        --%>
+                        var prm = Sys.WebForms.PageRequestManager.getInstance();
+                        prm.add_endRequest(function () {
+                            //initSwitchGrid();
+                        })
+                        //prm.add_pageLoaded(initSwitchGrid);
+                    </script>
+                    <button id="btn-main-nav" data-toggle="offcanvas" type="button"></button>
+
+                    <div id="header-title">
+                        <div class="logo-ci">
+                            <a href="#">
+                                <img src="../../asset/v3.0.0/images/img-temp-systemMain-v3s/ci-logo-en%402x.png" width="192" height="40" alt="中華航空 China Airlines" />
+                            </a>
+                        </div>
+                        <div class="website-title  website-title-pc">Flight Crew Duty Swap</div>
+                        <div class="website-title  website-title-mobile">Flight Crew Duty Swap</div>
+                    </div>
+                    <!-- header-title End-->
+
+                    <button id="btn-header-subarea" type="button"></button>
+                    <div id="header-subarea">
+                        <ul class="navbar-nav">
+                            <li>
+                                <a href="#" class="  hdsub-userinfo" data-toggle="modal" data-target="#modal-userinfo">
+                                    <span class="hdsub-user-empId"><asp:Label ID="lblUserID" runat="server" /></span>
+                                    <span class="hdsub-user-empName"><asp:Label ID="lblUserName" runat="server" /></span>
+                                </a>
+                            </li>
+                            <%--<li>
+                                <a href="#" class="">English</a>
+                            </li>
+                            <li>
+                                <a href="#" class="">操作手冊</a>
+                            </li>--%>
+                            <li>
+                                <asp:HyperLink ID="hlLougout" CssClass="btn-log-out" NavigateUrl="~/Logout.aspx" Text="Logout" runat="server" />
+                                <%--<asp:LinkButton ID="lbtnLogout" CssClass="btn-log-out" Text="Logout" runat="server" OnClick="lbtnLogOut_Click" />--%>
+                                <%--<a href="#" class="  hdsub-log-out">登出</a>--%>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--header-subarea End-->
+                </header>
+                <!--#header End -->
+
+                <div id="main" class="container-fluid">
+                    <!-- InstanceBeginEditable name="EditRegion-Main" -->
+                    <!--asp.net contentplaceholder start-->
+                    <div class="row">
+                        <div id="" class="col-xl-12">
+                            <header id="content-header">
+                                <div class="row">
+                                    <h1 class="col-md-6"><asp:Label ID="lblPgmid" runat="server" /></h1>
+                                    <nav aria-label="breadcrumb" class="col-md-6">
+                                        <%--<ol class="breadcrumb">
+                                              <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                              <li class="breadcrumb-item active" aria-current="page">Page Title</li>
+                                            </ol>--%>
+                                        <asp:SiteMapPath ID="SiteMapPath1" CurrentNodeStyle-CssClass="breadcrumb-item active" CssClass="breadcrumb" NodeStyle-CssClass="breadcrumb-item" PathSeparator="" PathSeparatorStyle-CssClass="breadcrumb-item active" RootNodeStyle-CssClass="breadcrumb-item" runat="server" />
+                                    </nav>
+                                </div>
+                            </header>
+                            <!-- content-header end-->
+
+                            <div id="divContentBody" runat="server"><%--content_body--%>
+                                <div>
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </div>
+
+                            </div>
+                            <!-- content-body -->
+                        </div>
+                    </div>
+                    <!--asp.net contentplaceholder end-->
+                    <!-- InstanceEndEditable -->
+                </div>
+                <!--#main End -->
+                
+            </form>
+
+            <footer id="footer">
+                <p class="footer-sysinfo">
+                    <span class="sysinfo-copyright">Copyright © China Airlines</span>
+                    <span class="sysinfo-sys">version: 1.0</span>
+                </p>
+            </footer>
+        </div>
+        <!-- page-container End-->
+
+        <nav id="main-nav">
+            <ul id="main-nav-menu" class="metismenu">
+                <li>
+                    <asp:HyperLink ID="hlTaskList" CssClass="mn-item" NavigateUrl="~/Module/Application/TaskList.aspx" Text="首頁<br>Home Page" runat="server" />
+                </li>
+                <%--<li>
+                    <a class="" href="#">
+                        <span class="mn-item">首頁</span>
+                    </a>
+                </li>--%>
+                <%--<li>
+                    <asp:HyperLink ID="hlFcdsApply" CssClass ="mn-item" NavigateUrl="~/Module/Application/NewFcdsApply.aspx" Text="填寫申請單" runat="server" />
+                </li>
+                <li>
+                    <a class="" href="#">
+                        <span class="mn-item">審核申請單</span>
+                    </a>
+                </li>--%>
+                <li>
+                    <asp:HyperLink ID="hlFcdsApplyList" CssClass ="mn-item" NavigateUrl="~/Module/Application/FcdsApply_List.aspx" Text="查詢申請單<br>Query Application" runat="server" />
+                </li>
+                <%--<li>
+                    <a class="has-arrow" href="#">
+                        <span class="mn-item">查詢</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="">Links 02.01</a>
+                        </li>
+                        <li>
+                            <a href="">Links 02.02</a>
+                        </li>
+                        <li>
+                            <a href="">Links 02.03</a>
+                        </li>
+                    </ul>
+                </li>--%>
+            </ul>
+        </nav>
+
+        <div id="screencover-dark"></div>
+    </div>
+    <!-- wrapper End -->
+
+    <!-- Modal - Userinfo -->
+    <div class="modal fade" id="modal-userinfo" tabindex="-1" aria-labelledby="modal-userinfo" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">User Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table  table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>User Name</td>
+                                <td>
+                                    <asp:Label ID="ModalUserName" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Employee ID</td>
+                                <td>
+                                    <asp:Label ID="ModalUserID" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Department</td>
+                                <td>
+                                    <asp:Label ID="ModalDepName" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>
+                                    <asp:Label ID="ModalUserRole" runat="server" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal - Userinfo End-->
+    
+    <%--<div id="CivdLoadingCover" class="">
+        <section id="loading-style01" class="loading-style  ">
+            <div id="loading-global-cities"></div>
+            <div id="loading-global-flight"></div>
+            <div class="loading-text">
+                <b>Loading</b>
+                <span class="ld-dot"></span>
+                <span class="ld-dot"></span>
+                <span class="ld-dot"></span>
+            </div>
+        </section>
+        <section id="loading-style02" class="loading-style  ">
+            <div id="loading-cuteplane"></div>
+            <div id="loading-cp-smokes">
+                <span class="cp-smoke"></span>
+                <span class="cp-smoke"></span>
+                <span class="cp-smoke"></span>
+                <span class="cp-smoke"></span>
+            </div>
+            <div class="loading-text">
+                <b>Loading</b>
+                <span class="ld-dot"></span>
+                <span class="ld-dot"></span>
+                <span class="ld-dot"></span>
+            </div>
+        </section>
+    </div>--%>
+    <!-- civd-loading End-->
+    <!-- InstanceBeginEditable name="EditRegion_Others" -->
+
+    <!--EditRegion-Others 這個樣版以外的其他元件寫在這裡，例如:內容用的彈跳視窗(Bootstrap:Modal)...等-->
+
+    <!-- InstanceEndEditable -->
+</body>
+<!-- InstanceEnd -->
+</html>

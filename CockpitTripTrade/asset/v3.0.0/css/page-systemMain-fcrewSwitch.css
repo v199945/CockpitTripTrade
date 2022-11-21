@@ -1,0 +1,727 @@
+@charset "UTF-8";
+/*------------------------------------------------------------------------*-
+    $Template "SystemMain" Ajust / 調整樣版:SystemMain樣版
+-*------------------------------------------------------------------------*/
+/*把調整樣版的css樣式寫在這裡*/
+@media screen and (min-width: 993px) and (max-width: 1180px) {
+    #header-title {
+        flex: 0 1 40%;
+    }
+
+        #header-title .website-title-pc {
+            font-size: 16px;
+            letter-spacing: 0;
+            width: 40%;
+        }
+}
+
+@media (max-width: 992px) {
+    #header-title .logo-ci {
+        display: none;
+    }
+
+    #header-title .website-title-pc {
+        display: none;
+    }
+
+    #header-title .website-title {
+        width: 100%;
+    }
+
+    #header-title .website-title-mobile {
+        display: block;
+        text-align: center;
+    }
+}
+
+
+/*------------------------------------------------------------------------*-
+    $Your Component / 您自訂可共用的內容元件CSS樣式
+-*------------------------------------------------------------------------*/
+.basefont-large {
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .button-fixed-bottom-undermd {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.5rem 15px;
+        background-color: #fff;
+        box-shadow: 0 -2px 2px #eee;
+        text-align: center;
+        z-index: 1000;
+    }
+}
+
+/*------------------------------------------------------------------------*-
+    $Your Style in content area / 依各頁特殊規劃的所撰寫的CSS樣式
+-*------------------------------------------------------------------------*/
+.nav-tabs.nav-tabs-primary {
+    border-bottom: 1px solid #23569d;
+}
+
+    .nav-tabs.nav-tabs-primary .nav-link.active,
+    .nav-tabs.nav-tabs-primary .nav-item.show .nav-link {
+        border-color: #23569d #23569d #fff;
+    }
+
+
+
+
+
+/*----- 首頁次數提示 -----*/
+.switchcount {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    border: 1px solid #23569d;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+    .switchcount.in-tabpanel {
+        border-top: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+.switchcount-head {
+    display: flex;
+    width: 50%;
+}
+
+.switchcount-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.switchcount-head p {
+    margin-bottom: 0.25rem;
+}
+
+.switchcount-avail,
+.switchcount-used {
+    width: 50%;
+    text-align: center;
+}
+
+.switchcount-avail {
+    border-right: 1px solid #23569d;
+}
+
+.switchc-countNo {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.625rem;
+}
+
+.switchcount-avail .switchc-countNo {
+    color: #23569d;
+}
+
+.switchcount-body .btn-primary-sp {
+    width: 60%;
+}
+
+@media screen and (max-width: 576px) {
+    .switchcount-head,
+    .switchcount-body {
+        width: 100%;
+    }
+
+    .switchcount-head {
+        margin-bottom: 1.25rem;
+    }
+
+    .switchcount-body .btn-primary-sp {
+        width: 80%;
+    }
+}
+/*----- 首頁次數提示end -----*/
+
+
+
+
+
+/*----- 首頁流程檢視 -----*/
+/*自製版本，與V3版型外觀相似但HTML結構不同。有使用相同CLASS。因此於此覆寫。*/
+.sheetcurrentstatus {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.25rem;
+    margin-bottom: 0.625rem;
+    border: 1px solid #23569d;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    　
+}
+
+.scs-header {
+    width: 25%;
+    text-align: left;
+}
+
+    .scs-header .scs-infolabel {
+        display: block;
+        color: #898989;
+        font-size: 0.875rem;
+    }
+
+    .scs-header .scs-sheet-id {
+        display: block;
+        color: #23569d;
+    }
+
+        .scs-header .scs-sheet-id > a {
+            text-decoration: underline;
+        }
+
+
+.scs-body {
+    position: relative;
+    width: 75%;
+}
+
+.scs-showsteps {
+    display: flex;
+    justify-content: start;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+    .scs-showsteps .scs-stepitem {
+        position: relative;
+        flex: 1 0 auto;
+        max-width: 25%;
+        text-align: center;
+    }
+
+.scs-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.scs-stepball::after {
+    position: absolute;
+    content: "";
+    top: 0.9375rem;
+    width: 100%;
+    border-top: 2px solid #23569d;
+    margin-left: 10px;
+    z-index: 0;
+}
+
+.scs-stepitem:last-child .scs-stepball::after {
+    display: none;
+}
+
+.scs-stepball {
+    font-size: 1.125rem;
+    color: #23569d;
+    margin: 0 auto 20px auto;
+    border: 2px solid #23569d;
+    border-radius: 50%;
+    width: 1.875rem;
+    height: 1.875rem;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.active .scs-stepball {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #fff;
+    font-size: 1.325rem;
+    line-height: 1.65;
+    border-radius: 50%;
+    background-color: #23569d;
+    margin: -5px auto 15px auto;
+    z-index: 2;
+}
+
+.active .scs-step-info {
+    color: #23569d;
+}
+
+.scs-stepball {
+    position: static !important;
+}
+
+
+
+@media screen and (max-width: 576px) {
+    .sheetcurrentstatus {
+        padding: 0.625rem;
+    }
+
+    .scs-header {
+        margin-bottom: 1rem;
+    }
+
+    .scs-header,
+    .scs-body {
+        width: 100%;
+    }
+
+        .scs-header .scs-infolabel,
+        .scs-header .scs-sheet-id {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+    .scs-showsteps {
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+/*----- 雙人換班表格 -----*/
+.schedule-2switch {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.ss-header {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    border: 2px solid #23569d;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px #ccc;
+    z-index: 1080;
+}
+
+@media (max-width: 768px) {
+    .ss-header {
+        border: none;
+        border-radius: 0;
+    }
+
+    .ss-header-sticky {
+        position: fixed;
+        top: 65px;
+        left: 0px;
+        right: 0px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.ss-header-item {
+    flex: 0 0 49%;
+    max-width: 49%;
+    min-height: 40px;
+    padding: .5rem;
+    text-align: center;
+}
+
+    .ss-header-item:first-child {
+        margin-right: 2%;
+    }
+
+.ss-main {
+    /* height: calc(100vh - 100px); */
+    border-bottom: 2px solid #23569d;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.ss-row {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.ss-1pdata {
+    display: flex;
+    flex: 0 0 49%;
+    max-width: 49%;
+    border: 1px solid #aaa;
+    border-left: 2px solid #aaa;
+    border-right: 2px solid #aaa;
+}
+
+.ss-selectable {
+    border: 1px solid #23569d;
+    border-left: 2px solid #23569d;
+    border-right: 2px solid #23569d;
+}
+
+    .ss-selectable:hover .ss-pickdate,
+    .ss-selectable:hover .ss-duties,
+    .ss-selectable.ss-js-group-hover .ss-pickdate,
+    .ss-selectable.ss-js-group-hover .ss-duties {
+        cursor: pointer;
+        background-color: #d2e5f6;
+    }
+
+.ss-unselectable {
+    /* background-color: #f4f3f1; */
+}
+
+    .ss-unselectable:hover {
+        cursor: auto;
+    }
+
+.ss-1pdata:first-child {
+    margin-right: 2%;
+}
+
+.ss-1pdata.ss-selected {
+    border: 1px solid #004856;
+    border-left: 2px solid #004856;
+    border-right: 2px solid #004856;
+    background-color: #81abd5;
+    box-shadow: 0 2px 5px #ccc;
+}
+
+.ss-pickdate {
+    width: 7.5rem;
+    flex: 0 0 7.5rem;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+}
+
+.ss-selectable .ss-pickdate {
+    color: #23569d;
+    background-color: #e5f0fa;
+}
+
+.ss-unselectable .ss-pickdate {
+    color: #555;
+    background-color: #f4f3f1;
+}
+
+    .ss-unselectable .ss-pickdate input[type="checkbox"] {
+        visibility: hidden;
+    }
+
+
+.ss-duties {
+    flex-grow: 1;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .25rem .5rem;
+    align-items: center;
+}
+
+.ss-selectable .ss-duties {
+    background-color: #f8fbff;
+}
+
+.ss-flight {
+    margin-right: .5rem;
+    min-height: 60px;
+    border: 1px solid #aaa;
+    border-radius: .5rem;
+    padding: .25rem .5rem;
+    margin-bottom: .1rem;
+    background-color: #fff;
+}
+
+.ss-dutyname {
+    display: flex;
+    align-items: center;
+    margin-right: .5rem;
+    min-width: 8rem;
+    min-height: 66px;
+    border: 1px solid #aaa;
+    border-radius: .5rem;
+    padding: .25rem .5rem;
+    margin-bottom: .1rem;
+    background-color: #fff;
+}
+
+.ssf-row {
+    width: 6.875rem;
+    float: left;
+}
+
+
+.ss-selected .ss-flight {
+    border: 1px solid #23569d;
+}
+
+.ss-selected .ss-pickdate,
+.ss-selected:hover .ss-pickdate,
+.ss-selected .ss-duties,
+.ss-selected:hover .ss-duties {
+    background-color: #23569d !important;
+}
+
+.ss-selected .ss-pickdate,
+.ss-selected:hover .ss-pickdate {
+    color: #fff !important;
+}
+
+.ss-flightno, .ssflight-route {
+    display: block;
+    color: #23569d;
+}
+
+.ss-fr-station {
+    margin: 0 .25rem;
+    font-weight: normal;
+}
+
+    .ss-fr-station:first-child {
+        margin: 0;
+    }
+
+.ss-rptime-block {
+    font-size: 0.875rem;
+    color: #aaa;
+}
+
+.ss-rptime {
+    color: #1c1c1c;
+}
+
+.ss-unselectable .ss-duties {
+}
+
+.ss-unselectable .ss-flight,
+.ss-unselectable .ss-dutyname {
+    border: 1px solid #ddd;
+}
+
+.ss-unselectable .ss-flight,
+.ss-unselectable .ss-dutyname,
+.ss-unselectable .ss-flightno,
+.ss-unselectable .ssflight-route,
+.ss-unselectable .ss-rptime-block,
+.ss-unselectable .ss-rptime {
+    color: #333;
+}
+
+
+
+@media (max-width: 768px) {
+    .schedule-2switch {
+        border-radius: 0;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .ss-header-item .h4 {
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .ss-main {
+        height: auto;
+        box-shadow: none;
+        border: none;
+    }
+
+    .ss-1pdata {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .ss-pickdate {
+        width: 100%;
+        flex: 0 0 auto;
+        border-right: none;
+        border-top: 1px solid #aaa;
+        border-bottom: 1px solid #aaa;
+    }
+
+    .ss-duties {
+        width: 100%;
+        align-items: flex-start;
+        padding-bottom: 2rem;
+    }
+
+    .ss-flight {
+        width: 100%;
+        margin: 0;
+        margin-bottom: .5rem;
+        min-height: auto;
+    }
+
+    .ss-dutyname {
+        width: 100%;
+        margin-bottom: .5rem;
+        min-height: auto;
+    }
+
+    .ssf-row {
+        width: 100%;
+        float: none;
+    }
+
+    .ss-flightno, .ssflight-route {
+        display: inline-block;
+    }
+}
+/*----- 雙人換班表格 End -----*/
+
+
+
+
+
+/*----- 審核申請單列表 : Responsive <table> -----*/
+@media (max-width: 768px) {
+    .fcs-table-reviewlists {
+        border: none;
+    }
+
+        .fcs-table-reviewlists thead {
+            display: none;
+        }
+
+        .fcs-table-reviewlists tbody tr {
+            position: relative;
+            display: block;
+            margin-bottom: 0.5rem;
+            border: 1px solid #23569d;
+        }
+
+        .fcs-table-reviewlists.table-striped tbody tr {
+            background-color: transparent;
+            border-radius: 10px;
+        }
+
+
+        .fcs-table-reviewlists tr td:nth-child(1) {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border: none;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: #fff;
+        }
+
+            .fcs-table-reviewlists tr td:nth-child(1) a {
+                display: block;
+                width: 25px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                border-left: 1px solid #23569d;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                background: #fff url(../../cont-img/icon-arrow-right.svg) center center no-repeat;
+                background-size: 25px 25px;
+                text-indent: -9999px;
+            }
+
+
+
+        .fcs-table-reviewlists tr td:nth-child(2),
+        .fcs-table-reviewlists tr td:nth-child(3) {
+            display: block;
+            padding: 0.5rem;
+            border: none;
+            float: left;
+            border-bottom: 1px solid #23569d;
+            background-color: #f8fbff;
+        }
+
+        .fcs-table-reviewlists tr td:nth-child(2) {
+            width: 55%;
+            color: #23569d;
+            border-top-left-radius: 10px;
+        }
+
+        .fcs-table-reviewlists tr td:nth-child(3) {
+            width: 45%;
+            border-top-right-radius: 10px;
+            text-align: right;
+            padding-right: 33px;
+        }
+
+        .fcs-table-reviewlists tr td:nth-child(4),
+        .fcs-table-reviewlists tr td:nth-child(5),
+        .fcs-table-reviewlists tr td:nth-child(6),
+        .fcs-table-reviewlists tr td:nth-child(7),
+        .fcs-table-reviewlists tr td:nth-child(8),
+        .fcs-table-reviewlists tr td:nth-child(9) /*,
+    .fcs-table-reviewlists tr td:nth-child(10)*/ {
+            clear: both;
+            display: block;
+            margin-right: 30px;
+            padding: 0.12rem 0.5rem;
+            border: none;
+            text-align: right;
+        }
+
+
+
+
+            .fcs-table-reviewlists tr td:nth-child(4)::before,
+            .fcs-table-reviewlists tr td:nth-child(5)::before,
+            .fcs-table-reviewlists tr td:nth-child(6)::before,
+            .fcs-table-reviewlists tr td:nth-child(7)::before,
+            .fcs-table-reviewlists tr td:nth-child(8)::before,
+            .fcs-table-reviewlists tr td:nth-child(9)::before /*,
+    .fcs-table-reviewlists tr td:nth-child(10)::before*/ {
+                display: block;
+                width: 45%;
+                margin-right: 0.5rem;
+                color: #23569d;
+                float: left;
+                text-align-last: left;
+            }
+            /*.fcs-table-reviewlists tr td:nth-child(4)::before{
+        content:"批核狀態";
+    }*/
+            .fcs-table-reviewlists tr td:nth-child(4)::before {
+                content: "申請日期";
+            }
+
+            .fcs-table-reviewlists tr td:nth-child(5)::before {
+                content: "任務日期";
+            }
+
+            .fcs-table-reviewlists tr td:nth-child(6)::before {
+                content: "申請人";
+            }
+
+            .fcs-table-reviewlists tr td:nth-child(7)::before {
+                content: "受申請人";
+            }
+
+            .fcs-table-reviewlists tr td:nth-child(8)::before {
+                content: "機隊";
+            }
+
+            .fcs-table-reviewlists tr td:nth-child(9)::before {
+                content: "職級";
+            }
+}
+/*----- 審核申請單列表 : Responsive <table> End-----*/
+
+
+
+
+/*------------------------------------------------------------------------*-
+    $Third Party / 其他第三方樣式
+-*------------------------------------------------------------------------*/

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="~/Login.aspx" title="Home" description="Flight Crew Duty Swap Application System">
+		<siteMapNode title="Admintration" description="Admintration">
+			<siteMapNode url="~/Module/Admin/ImpersonateUser.aspx" title="Impersonate Employee" description="模擬組派部登入" />
+		</siteMapNode>
+		<siteMapNode title="Application" description="Application">
+			<siteMapNode url="~/Module/Application/ReviewFcdsApply_List.aspx" title="Application List" description="審核申請單" />
+			<siteMapNode url="~/Module/Application/FcdsApply_List.aspx" title="Application List" description="查詢申請單" />
+			<siteMapNode url="~/Module/Application/FcdsApply.aspx" title="Application Form" description="檢視申請單" />
+		</siteMapNode>
+		<siteMapNode title="Configuration" description="Configuration">
+			<siteMapNode url="~/Module/Configuration/FcdsConfig_List.aspx" title="Aircraft Type and Rank List" description="機隊職級維護清單" />
+			<siteMapNode url="~/Module/Configuration/FcdsConfig.aspx" title="Aircraft Type and Rank" description="機隊職級" />
+			<siteMapNode url="~/Module/Configuration/FcdsConfig_Log.aspx" title="機隊職級維護版本紀錄比較" description="設定" />
+			<siteMapNode url="~/Module/Configuration/FcdsRejectReason_List.aspx" title="Reject Reason List" description="不同意原因選項維護清單" />
+			<siteMapNode url="~/Module/Configuration/FcdsRejectReason.aspx" title="Reject Reason" description="不同意原因選項維護" />
+			<siteMapNode url="~/Module/Configuration/FcdsRejectReason_Log.aspx" title="不同意原因選項維護版本紀錄比較" description="不同意原因維護版本版本紀錄比較" />
+			<siteMapNode url="~/Module/Configuration/Group_List.aspx" title="System Group List" description="系統群組維護清單" />
+			<siteMapNode url="~/Module/Configuration/Group.aspx" title="System Group" description="系統群組維護" />
+			<siteMapNode url="" title=""  description="" />
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>

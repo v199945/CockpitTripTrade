@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ValidationSummary.ascx.cs" Inherits="CockpitTripTrade.UserControl.UserControl_ValidationSummary" %>
+<asp:ValidationSummary ID="ValidationSummary1" ShowMessageBox="true" ShowSummary="false" runat="server" />

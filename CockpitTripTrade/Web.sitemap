@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="~/Module/Application/TaskList.aspx" title="Home" description="Flight Crew Duty Swap Application System">
+		<siteMapNode title="Admintration" description="Admintration">
+			<siteMapNode url="~/Module/Admin/ImpersonateUser.aspx" title="Impersonate Crew" description="模擬組員登入" />	
+		</siteMapNode>
+		<siteMapNode title="Application" description="Application">
+			<siteMapNode url="~/Module/Application/FcdsApply_List.aspx" title="Application List" description="查詢申請單" />
+			<siteMapNode url="~/Module/Application/FcdsApply.aspx" title="Application Form" description="申請單" />
+			<siteMapNode url="~/Module/Application/NewFcdsApply.aspx" title="Application Form" description="填寫申請單" />
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>
